@@ -8,8 +8,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using ImobilizadosStone.Resources;
 
-namespace ImobilizadosStone
+namespace ImobilizadosStone.WebAPI
 {
     public class Startup
     {
@@ -24,6 +25,18 @@ namespace ImobilizadosStone
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            ConfigureMongoDB(services);
+        }
+
+        public void ConfigureMongoDB(IServiceCollection services)
+        {
+            services.Configure<Settings>(options =>
+            {
+                options.ConnectionString = Configuration.GetSection("MongoDBConnection:ConnectionString").Value;
+                options.Database = Configuration.GetSection("MongoDBConnection:Database").Value;
+            });
+
+            ImobilizadosStone.Repository.RepositoryStartup.Initialize();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

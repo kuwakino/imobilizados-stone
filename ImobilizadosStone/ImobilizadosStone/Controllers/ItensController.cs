@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebApplication1.Controllers
+namespace ImobilizadosStone.WebAPI.Controllers
 {
     [Route("api/itens")]
     public class ItensController : Controller

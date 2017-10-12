@@ -3,7 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImobilizadosStone", "ImobilizadosStone\ImobilizadosStone.csproj", "{6BB6D5FD-B6B7-4E9B-9FF0-4E315675D2FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImobilizadosStone.WebAPI", "ImobilizadosStone\ImobilizadosStone.WebAPI.csproj", "{6BB6D5FD-B6B7-4E9B-9FF0-4E315675D2FF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 Application", "1 Application", "{BDD32E20-FE8F-447D-B148-C68BB5C733CF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 Core", "2 Core", "{55C3D099-5D9A-438C-9656-56D3492C22E2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 Infrastructure", "3 Infrastructure", "{C8C651F7-CE54-4EDC-B042-A1FBF1416B4E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImobilizadosStone.Repository", "ImobilizadosStone.Repository\ImobilizadosStone.Repository.csproj", "{56A75622-B04A-4FD4-9FED-617A0C0B2346}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImobilizadosStone.Domain", "ImobilizadosStone.Domain\ImobilizadosStone.Domain.csproj", "{AB96737A-D153-4918-9976-CC30D4D2D554}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImobilizadosStone.Resources", "Resources\ImobilizadosStone.Resources.csproj", "{3C5D39E3-0537-4DC2-BF05-4A9ABFB48B64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImobilizadosStone.Domain.Test", "ImobilizadosStone.Domain.Test\ImobilizadosStone.Domain.Test.csproj", "{0DAA93D2-BEFD-448E-A0AA-95DC03816C10}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +29,32 @@ Global
 		{6BB6D5FD-B6B7-4E9B-9FF0-4E315675D2FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BB6D5FD-B6B7-4E9B-9FF0-4E315675D2FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BB6D5FD-B6B7-4E9B-9FF0-4E315675D2FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56A75622-B04A-4FD4-9FED-617A0C0B2346}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56A75622-B04A-4FD4-9FED-617A0C0B2346}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56A75622-B04A-4FD4-9FED-617A0C0B2346}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56A75622-B04A-4FD4-9FED-617A0C0B2346}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB96737A-D153-4918-9976-CC30D4D2D554}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB96737A-D153-4918-9976-CC30D4D2D554}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB96737A-D153-4918-9976-CC30D4D2D554}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB96737A-D153-4918-9976-CC30D4D2D554}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C5D39E3-0537-4DC2-BF05-4A9ABFB48B64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C5D39E3-0537-4DC2-BF05-4A9ABFB48B64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C5D39E3-0537-4DC2-BF05-4A9ABFB48B64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C5D39E3-0537-4DC2-BF05-4A9ABFB48B64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DAA93D2-BEFD-448E-A0AA-95DC03816C10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DAA93D2-BEFD-448E-A0AA-95DC03816C10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DAA93D2-BEFD-448E-A0AA-95DC03816C10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DAA93D2-BEFD-448E-A0AA-95DC03816C10}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6BB6D5FD-B6B7-4E9B-9FF0-4E315675D2FF} = {BDD32E20-FE8F-447D-B148-C68BB5C733CF}
+		{56A75622-B04A-4FD4-9FED-617A0C0B2346} = {C8C651F7-CE54-4EDC-B042-A1FBF1416B4E}
+		{AB96737A-D153-4918-9976-CC30D4D2D554} = {55C3D099-5D9A-438C-9656-56D3492C22E2}
+		{3C5D39E3-0537-4DC2-BF05-4A9ABFB48B64} = {C8C651F7-CE54-4EDC-B042-A1FBF1416B4E}
+		{0DAA93D2-BEFD-448E-A0AA-95DC03816C10} = {55C3D099-5D9A-438C-9656-56D3492C22E2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B2CE7156-0585-4529-A6CE-CC767F6784D4}
