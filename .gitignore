@@ -2,13 +2,13 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/ImobilizadosStone/ImobilizadosStone/bin/Debug/netcoreapp2.0
-/ImobilizadosStone/ImobilizadosStone/obj/Debug/netcoreapp2.0
-/ImobilizadosStone/ImobilizadosStone.Domain/bin/Debug/netstandard2.0
+/ImobilizadosStone/ImobilizadosStone/bin
+/ImobilizadosStone/ImobilizadosStone/obj
+/ImobilizadosStone/ImobilizadosStone.Domain/bin
 /ImobilizadosStone/ImobilizadosStone.Domain/obj
-/ImobilizadosStone/ImobilizadosStone.Domain.Test/bin/Debug/netstandard2.0
+/ImobilizadosStone/ImobilizadosStone.Domain.Test/bin
 /ImobilizadosStone/ImobilizadosStone.Domain.Test/obj
-/ImobilizadosStone/ImobilizadosStone.Repository/bin/Debug/netstandard2.0
+/ImobilizadosStone/ImobilizadosStone.Repository/bin
 /ImobilizadosStone/ImobilizadosStone.Repository/obj
-/ImobilizadosStone/Resources/bin/Debug/netstandard2.0
+/ImobilizadosStone/Resources/bin
 /ImobilizadosStone/Resources/obj
