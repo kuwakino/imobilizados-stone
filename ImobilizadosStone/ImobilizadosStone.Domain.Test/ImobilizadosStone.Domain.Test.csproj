@@ -1,15 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="xunit" Version="2.3.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ImobilizadosStone.Domain\ImobilizadosStone.Domain.csproj" />
+    <ProjectReference Include="..\ImobilizadosStone.Repository\ImobilizadosStone.Repository.csproj" />
   </ItemGroup>
 
 </Project>

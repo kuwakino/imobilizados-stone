@@ -4965,7 +4965,6 @@
         "dependencies": {
           "ImobilizadosStone.Domain": "1.0.0",
           "ImobilizadosStone.Resources": "1.0.0",
-          "Microsoft.Extensions.Options": "2.0.0",
           "MongoDB.Driver": "2.4.4"
         },
         "compile": {

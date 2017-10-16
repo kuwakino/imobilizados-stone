@@ -1,26 +1,70 @@
-﻿using ImobilizadosStone.Domain.Entities;
-using ImobilizadosStone.Domain.Services;
+﻿using ImobilizadosStone.Domain.Repository;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Xunit;
+using ImobilizadosStone.Domain.Entities;
+using System.Linq.Expressions;
+using ImobilizadosStone.Domain.Services;
 
 namespace ImobilizadosStone.Domain.Test.Service
 {
-    public class ItemServiceTest
+    //TODO: alternartiva usar biblioteca para mocks (ex.: Moq)
+    public class MockItemRepository : IItemRepository
     {
-        private readonly IItemService _itemService;
+        public Item _itemGet;
 
-        public ItemServiceTest(IItemService itemService)
+        public MockItemRepository(Item itemGet)
         {
-            _itemService = itemService;
+            _itemGet = itemGet;
+        }
+        
+        public void Delete(string id)
+        {
+            throw new NotImplementedException();
         }
 
-        public void SeedTest()
+        public Item Get(string id)
         {
-            var floor1 = new Floor
+            return _itemGet;
+        }
+
+        public IEnumerable<Item> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Item> GetByExpression(Expression<Func<Item, bool>> expression)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Insert(Item entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(string id, Item entity)
+        {
+
+        }
+    }
+
+    public class ItemServiceTest
+    {
+        [Fact]
+        private void GivenItemAllocated_WhenUse_ThenFalseToUse()
+        {
+            var item = new Item
             {
-                Number = 1,
-                Building = "Ed. Stone",
+                Id = "ItemEmUso",
+                Name = "stn-2017-0001 Dell i13-7348-v40",
+                Enabled = true,
+                Floor = new Floor
+                {
+                    Number = 1,
+                    Building = "Ed. Stone",
+                }
             };
 
             var floor2 = new Floor
@@ -29,65 +73,51 @@ namespace ImobilizadosStone.Domain.Test.Service
                 Building = "Ed. Stone",
             };
 
-            _itemService.Add(new Item
-            {
-                Name = "stn-2017-0001 Dell i13-7348-v40",
-                Enabled = true,
-                Floor = floor1
-            });
+            var service = new ItemService(new MockItemRepository(item));
+            var resultAct = service.Use(item.Id, floor2);
+            Assert.False(resultAct);
+        }
 
-            _itemService.Add(new Item
+        [Fact]
+        private void GivenItemNotAllocatedAndEnabled_WhenUse_ThenTrueToUse()
+        {
+            var item = new Item
             {
+                Id = "ItemLivre",
                 Name = "stn-2017-0002 Dell i13-7348-v40",
-                Enabled = true,
-                Floor = floor1
-            });
+                Enabled = true                
+            };
 
-            _itemService.Add(new Item
+            var floor2 = new Floor
             {
-                Name = "stn-2017-0003 Samsung S24E310",
-                Enabled = true,
-                Floor = floor1
-            });
+                Number = 2,
+                Building = "Ed. Stone",
+            };
 
-            _itemService.Add(new Item
-            {
-                Name = "stn-2017-0004 Samsung S24E310",
-                Enabled = true,
-                Floor = floor1
-            });
+            var service = new ItemService(new MockItemRepository(item));
+            var resultAct = service.Use(item.Id, floor2);
+            Assert.True(resultAct);
+        }
 
-            _itemService.Add(new Item
+        [Fact]
+        private void GivenItemNotAllocatedAnDisabled_WhenUse_ThenFalseToUse()
+        {
+            var item = new Item
             {
-                Name = "stn-2017-0005 Dell i13-7348-v40",
-                Enabled = true,
-                Floor = floor2
-            });
+                Id = "ItemDesabilitado",
+                Name = "stn-2017-0003 Dell i13-7348-v40",
+                Enabled = false
+            };
 
-            _itemService.Add(new Item
+            var floor2 = new Floor
             {
-                Name = "stn-2017-0006 Samsung S24E310",
-                Enabled = true,
-                Floor = floor2
-            });
+                Number = 2,
+                Building = "Ed. Stone",
+            };
 
-            _itemService.Add(new Item
-            {
-                Name = "stn-2017-0007 Dell i13-7348-v40",
-                Enabled = true,
-            });
-
-            _itemService.Add(new Item
-            {
-                Name = "stn-2017-0008 Dell i13-7348-v40",
-                Enabled = true,
-            });
-
-            _itemService.Add(new Item
-            {
-                Name = "stn-2017-0009 Dell i13-7348-v40",
-                Enabled = false,
-            });
+            var service = new ItemService(new MockItemRepository(item));
+            var resultAct = service.Use(item.Id, floor2);
+            Assert.False(resultAct);
         }
     }
 }

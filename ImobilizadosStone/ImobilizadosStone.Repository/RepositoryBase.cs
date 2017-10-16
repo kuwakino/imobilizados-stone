@@ -1,12 +1,9 @@
-﻿using ImobilizadosStone.Domain.Repository;
+﻿using ImobilizadosStone.Resources;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
-using MongoDB.Bson;
-using Microsoft.Extensions.Options;
-using ImobilizadosStone.Resources;
 using System.Linq.Expressions;
 
 namespace ImobilizadosStone.Repository
