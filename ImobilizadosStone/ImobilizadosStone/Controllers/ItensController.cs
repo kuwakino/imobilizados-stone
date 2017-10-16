@@ -3,49 +3,110 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using ImobilizadosStone.Domain.Services;
+using ImobilizadosStone.WebAPI.DTO;
+using ImobilizadosStone.Domain.Entities;
 
 namespace ImobilizadosStone.WebAPI.Controllers
 {
     [Route("api/itens")]
     public class ItensController : Controller
     {
-        // GET api/itens
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly IItemService _itemService;
+
+        public ItensController(IItemService itemService)
         {
-            return new string[] { "value1", "value2" };
+            _itemService = itemService;
         }
 
-        // GET api/itens?status={status}
+        // GET api/itens
         [HttpGet]
-        public IEnumerable<string> Get([FromQuery] string status)
+        public IEnumerable<ItemDto> Get([FromQuery] int? floorNumber, [FromQuery] string buildingName)
         {
-            return new string[] { "value1", "value2" };
+            if (!floorNumber.HasValue)
+                return _itemService.GetAll().Select(i => new ItemDto(i));
+            else
+                return _itemService.GetAllAllocatedByFloor(floorNumber.Value, buildingName).Select(i => new ItemDto(i));
         }
 
         // GET api/itens/{id}
         [HttpGet("{id}")]
-        public string Get(int id)
+        public ItemDto Get(string id)
         {
-            return "value";
+            return new ItemDto(_itemService.GetById(id));
         }
 
         // POST api/itens
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]ItemDto value)
         {
+            var i = new Item();
+            i.Name = value.Name;
+            i.Enabled = true;
+
+            if (value.Floor != null)
+            {
+                i.Floor = new Floor
+                {
+                    Number = value.Floor.Number,
+                    Building = value.Floor?.Building,
+                };
+            }
+
+            _itemService.Add(i);            
         }
 
         // PUT api/itens/{id}
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public void Put(string id, [FromBody]ItemDto value)
         {
+            if (value == null || value.Id != id) //TODO: tratamento de exceção incluído apenas para informação ao cliente da API, necessita padronização
+                throw new Exception("Invalid item. Check Item data or id.");
+
+            var i = new Item();
+            i.Name = value.Name;
+            i.Enabled = value.Enabled;
+
+            if (value.Floor != null)
+            {
+                i.Floor = new Floor
+                {
+                    Number = value.Floor.Number,
+                    Building = value.Floor?.Building,
+                };
+            }
+
+            _itemService.Update(id, i);
+        }
+
+        // PUT api/itens/{id}/use
+        [HttpPut("{id}/use")]
+        public bool Use(string id, [FromBody]FloorDto floor)
+        {
+            var f = new Floor();
+            f.Number = floor.Number;
+            f.Building = floor.Building;
+
+            return _itemService.Use(id,f);
+        }
+
+        [HttpPut("{id}/enable")]
+        public bool Enable(string id)
+        {
+            return _itemService.Enable(id);
+        }
+
+        [HttpPut("{id}/disable")]
+        public bool Disable(string id)
+        {
+            return _itemService.Disable(id);
         }
 
         // DELETE api/itens/{id}
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(string id)
         {
+            _itemService.Delete(id);
         }
     }
 }

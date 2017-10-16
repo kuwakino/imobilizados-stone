@@ -7,11 +7,15 @@ namespace ImobilizadosStone.Domain.Services
 {
     public interface IItemService
     {
-        IEnumerable<Item> GetAllAllocated();
-        IEnumerable<Item> GetAllNotAllocated();
-        IEnumerable<Item> GetAllByFloor(int FloorNumber, string Building);
+        Item GetById(string id);
+        IEnumerable<Item> GetAll();
+        IEnumerable<Item> GetAllAllocatedByFloor(int floorNumber, string building);
         void Add(Item item);
-        void Update(Item item);
-        void Disable(Item item);
+        void Update(string id, Item item);
+        bool Disable(string id);
+        bool Enable(string id);
+        void Delete(string id);
+
+        bool Use(string id, Floor floor);
     }
 }

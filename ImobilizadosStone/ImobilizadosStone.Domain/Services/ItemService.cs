@@ -6,41 +6,75 @@ namespace ImobilizadosStone.Domain.Services
 {
     public class ItemService : IItemService
     {
-        IItemRepository _itemRepository;
+        private readonly IItemRepository _itemRepository;
 
         public ItemService(IItemRepository itemRepository)
         {
             _itemRepository = itemRepository;
         }
+                
+        public Item GetById(string id)
+        {
+            return _itemRepository.Get(id);
+        }
+
+        public IEnumerable<Item> GetAllAllocatedByFloor(int floorNumber, string building)
+        {
+            return _itemRepository.GetByExpression(i => i.Enabled && 
+                                                        i.Floor!=null && 
+                                                        i.Floor.Number == floorNumber && 
+                                                        i.Floor.Building == building);
+        }
+
+        public IEnumerable<Item> GetAll()
+        {
+            return _itemRepository.GetAll();
+        }
 
         public void Add(Item item)
         {
-            throw new System.NotImplementedException();
+            _itemRepository.Insert(item);
         }
 
-        public void Disable(Item item)
+        public bool Disable(string id)
         {
-            throw new System.NotImplementedException();
+            var itemBase = GetById(id);
+            itemBase.Enabled = false;
+            Update(id, itemBase);
+            return !itemBase.Enabled;
         }
 
-        public IEnumerable<Item> GetAllAllocated()
+        public void Update(string id, Item item)
         {
-            throw new System.NotImplementedException();
+            item.Id = id;
+            _itemRepository.Update(id, item);
         }
 
-        public IEnumerable<Item> GetAllByFloor(int FloorNumber, string Building)
+        public bool Enable(string id)
         {
-            throw new System.NotImplementedException();
+            var itemBase = GetById(id);
+            itemBase.Enabled = true;
+            Update(id, itemBase);
+            return itemBase.Enabled;
         }
 
-        public IEnumerable<Item> GetAllNotAllocated()
+        public void Delete(string id)
         {
-            throw new System.NotImplementedException();
+            _itemRepository.Delete(id);
         }
 
-        public void Update(Item item)
+        public bool Use(string id, Floor floor)
         {
-            throw new System.NotImplementedException();
+            var itemBase = GetById(id);
+            if (itemBase.Enabled && !itemBase.Allocated)
+            {
+                itemBase.Floor = floor;
+                Update(id, itemBase);
+
+                return true;
+            }
+            else
+                return false;
         }
     }
 }

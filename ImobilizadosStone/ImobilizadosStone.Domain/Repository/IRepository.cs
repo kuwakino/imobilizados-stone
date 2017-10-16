@@ -11,8 +11,8 @@ namespace ImobilizadosStone.Domain.Repository
         IEnumerable<T> GetAll();
         T Get(string id);
         void Insert(T entity);
-        void Update(T entity);
-        void Delete(T entity);
+        void Update(string id, T entity);
+        void Delete(string id);
 
         IEnumerable<T> GetByExpression(Expression<Func<T, bool>> expression);
     }

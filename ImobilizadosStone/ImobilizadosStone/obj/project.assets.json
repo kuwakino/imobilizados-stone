@@ -3038,6 +3038,47 @@
           "lib/netstandard1.3/SimpleInjector.dll": {}
         }
       },
+      "SimpleInjector.Integration.AspNetCore/4.0.11": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Hosting.Abstractions": "1.0.0",
+          "Microsoft.AspNetCore.Http.Abstractions": "1.0.0",
+          "SimpleInjector": "4.0.11"
+        },
+        "compile": {
+          "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.dll": {}
+        }
+      },
+      "SimpleInjector.Integration.AspNetCore.Mvc/4.0.11": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Mvc.Razor": "1.0.0",
+          "SimpleInjector.Integration.AspNetCore.Mvc.Core": "4.0.11"
+        },
+        "compile": {
+          "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.Mvc.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.Mvc.dll": {}
+        }
+      },
+      "SimpleInjector.Integration.AspNetCore.Mvc.Core/4.0.11": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Mvc.Core": "1.0.0",
+          "Microsoft.AspNetCore.Mvc.ViewFeatures": "1.0.0",
+          "SimpleInjector.Integration.AspNetCore": "4.0.11"
+        },
+        "compile": {
+          "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.Mvc.Core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.Mvc.Core.dll": {}
+        }
+      },
       "SQLitePCLRaw.bundle_green/1.1.7": {
         "type": "package",
         "dependencies": {
@@ -8091,6 +8132,45 @@
         "simpleinjector.nuspec"
       ]
     },
+    "SimpleInjector.Integration.AspNetCore/4.0.11": {
+      "sha512": "VUtxbaL5QNBn1Yxpp+4w14C4kqirRIkzA06vV2A/5iczKfIhF2ssmHNW5k+mHtWqGz0npqhK7gD3uJrJUHg5aw==",
+      "type": "package",
+      "path": "simpleinjector.integration.aspnetcore/4.0.11",
+      "files": [
+        "lib/net451/SimpleInjector.Integration.AspNetCore.dll",
+        "lib/net451/SimpleInjector.Integration.AspNetCore.xml",
+        "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.dll",
+        "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.xml",
+        "simpleinjector.integration.aspnetcore.4.0.11.nupkg.sha512",
+        "simpleinjector.integration.aspnetcore.nuspec"
+      ]
+    },
+    "SimpleInjector.Integration.AspNetCore.Mvc/4.0.11": {
+      "sha512": "NcWtwaEcKoHTeFezAb1GXS6W0xVSihsDSrckbvZH3Z0jFlu0P+icDZ8lUglj4s5Yzs09qknqOcUolALyMDGzqQ==",
+      "type": "package",
+      "path": "simpleinjector.integration.aspnetcore.mvc/4.0.11",
+      "files": [
+        "lib/net451/SimpleInjector.Integration.AspNetCore.Mvc.dll",
+        "lib/net451/SimpleInjector.Integration.AspNetCore.Mvc.xml",
+        "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.Mvc.dll",
+        "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.Mvc.xml",
+        "simpleinjector.integration.aspnetcore.mvc.4.0.11.nupkg.sha512",
+        "simpleinjector.integration.aspnetcore.mvc.nuspec"
+      ]
+    },
+    "SimpleInjector.Integration.AspNetCore.Mvc.Core/4.0.11": {
+      "sha512": "PPCsvrAIXwbfFOmNyvV72oxaNnvjppiy4vt6AW27+N4Pt+ObdjLSASow1Du7PAC6QuDG6tje8RDJsRgGd1HwEg==",
+      "type": "package",
+      "path": "simpleinjector.integration.aspnetcore.mvc.core/4.0.11",
+      "files": [
+        "lib/net451/SimpleInjector.Integration.AspNetCore.Mvc.Core.dll",
+        "lib/net451/SimpleInjector.Integration.AspNetCore.Mvc.Core.xml",
+        "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.Mvc.Core.dll",
+        "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.Mvc.Core.xml",
+        "simpleinjector.integration.aspnetcore.mvc.core.4.0.11.nupkg.sha512",
+        "simpleinjector.integration.aspnetcore.mvc.core.nuspec"
+      ]
+    },
     "SQLitePCLRaw.bundle_green/1.1.7": {
       "sha512": "Kw+n4CUhQ8S4YAPmpRUldO8S7c4LU7HHukJF0v5Sfggf8Ia9YVdIh0dYkMvKvS+DTX+OBORSMqPM0CGfAzFtVA==",
       "type": "package",
@@ -12936,7 +13016,8 @@
       "ImobilizadosStone.Resources >= 1.0.0",
       "Microsoft.AspNetCore.All >= 2.0.0",
       "Microsoft.NETCore.App >= 2.0.0",
-      "SimpleInjector >= 4.0.11"
+      "SimpleInjector >= 4.0.11",
+      "SimpleInjector.Integration.AspNetCore.Mvc >= 4.0.11"
     ]
   },
   "packageFolders": {
@@ -12998,6 +13079,10 @@
             "target": "Package",
             "version": "2.0.0",
             "autoReferenced": true
+          },
+          "SimpleInjector.Integration.AspNetCore.Mvc": {
+            "target": "Package",
+            "version": "4.0.11"
           },
           "Microsoft.AspNetCore.All": {
             "target": "Package",

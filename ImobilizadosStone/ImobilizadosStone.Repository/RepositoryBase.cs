@@ -15,13 +15,13 @@ namespace ImobilizadosStone.Repository
     {
         protected readonly IMongoCollection<T> Collection;
 
-        public RepositoryBase(IOptions<Settings> settings, string collection)
+        public RepositoryBase(Settings settings, string collection)
         {
             //TODO: Singleton para MongoClient
-            var client = new MongoClient(settings.Value.ConnectionString);
+            var client = new MongoClient(settings.ConnectionString);
             if (client != null)
             {
-                var database = client.GetDatabase(settings.Value.Database);
+                var database = client.GetDatabase(settings.Database);
 
                 Collection = database.GetCollection<T>(collection);
             }
@@ -47,6 +47,19 @@ namespace ImobilizadosStone.Repository
         public IEnumerable<T> GetByExpression(Expression<Func<T, bool>> expression)
         {
             return Collection.AsQueryable().Where(expression);
+        }
+
+        public void Delete(string id)
+        {
+            var filter = Builders<T>.Filter.Eq("Id", id);
+            var result = Collection.DeleteOne(filter);
+        }
+
+        public void Update(string id, T entity)
+        {
+            var filter = Builders<T>.Filter.Eq("Id", id);
+
+            var result = Collection.ReplaceOne(filter, entity);
         }
     }
 }

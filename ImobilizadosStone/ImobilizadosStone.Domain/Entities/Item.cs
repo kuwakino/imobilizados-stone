@@ -9,7 +9,7 @@ namespace ImobilizadosStone.Domain.Entities
         public string Id { get; set; }
 
         public string Name { get; set; }
-        public bool Allocated { get; set; }
+        public bool Allocated { get => Floor != null; }
         public bool Enabled { get; set; }
 
         public Floor Floor { get; set; }        
