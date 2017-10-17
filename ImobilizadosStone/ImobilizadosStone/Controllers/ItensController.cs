@@ -21,12 +21,25 @@ namespace ImobilizadosStone.WebAPI.Controllers
 
         // GET api/itens
         [HttpGet]
-        public IEnumerable<ItemDto> Get([FromQuery] int? floorNumber, [FromQuery] string buildingName)
+        public IEnumerable<ItemDto> Get([FromQuery] bool? allocated, [FromQuery] int? floorNumber, [FromQuery] string buildingName)
         {
-            if (!floorNumber.HasValue)
-                return _itemService.GetAll().Select(i => new ItemDto(i));
+            if (floorNumber.HasValue)
+            {
+                if (!allocated.HasValue || allocated.HasValue && allocated.Value)
+                    return _itemService.GetAllAllocatedByFloor(floorNumber.Value, buildingName).Select(i => new ItemDto(i));
+                else
+                    return new List<ItemDto>();
+            }
             else
-                return _itemService.GetAllAllocatedByFloor(floorNumber.Value, buildingName).Select(i => new ItemDto(i));
+            {
+                if (allocated.HasValue)
+                    if (allocated.Value)
+                        return _itemService.GetAllAllocated().Select(i => new ItemDto(i));
+                    else
+                        return _itemService.GetAllNotAllocated().Select(i => new ItemDto(i));
+            }
+                        
+            return _itemService.GetAll().Select(i => new ItemDto(i)); //!allocated.HasValue && !floorNumber.HasValue
         }
 
         // GET api/itens/{id}
@@ -53,7 +66,7 @@ namespace ImobilizadosStone.WebAPI.Controllers
                 };
             }
 
-            _itemService.Add(i);            
+            _itemService.Add(i);
         }
 
         // PUT api/itens/{id}
@@ -87,7 +100,7 @@ namespace ImobilizadosStone.WebAPI.Controllers
             f.Number = floor.Number;
             f.Building = floor.Building;
 
-            return _itemService.Use(id,f);
+            return _itemService.Use(id, f);
         }
 
         [HttpPut("{id}/enable")]

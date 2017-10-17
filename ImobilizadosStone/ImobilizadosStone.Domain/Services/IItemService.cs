@@ -10,6 +10,8 @@ namespace ImobilizadosStone.Domain.Services
         Item GetById(string id);
         IEnumerable<Item> GetAll();
         IEnumerable<Item> GetAllAllocatedByFloor(int floorNumber, string building);
+        IEnumerable<Item> GetAllAllocated();
+        IEnumerable<Item> GetAllNotAllocated();
         void Add(Item item);
         void Update(string id, Item item);
         bool Disable(string id);

@@ -26,6 +26,18 @@ namespace ImobilizadosStone.Domain.Services
                                                         i.Floor.Building == building);
         }
 
+        public IEnumerable<Item> GetAllAllocated()
+        {
+            return _itemRepository.GetByExpression(i => i.Enabled &&
+                                                        i.Floor != null);
+        }
+
+        public IEnumerable<Item> GetAllNotAllocated()
+        {
+            return _itemRepository.GetByExpression(i => i.Enabled &&
+                                                        i.Floor == null);
+        }
+
         public IEnumerable<Item> GetAll()
         {
             return _itemRepository.GetAll();

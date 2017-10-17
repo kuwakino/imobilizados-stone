@@ -1,0 +1,425 @@
+{
+	"info": {
+		"name": "imobilizados-stone v0.1",
+		"_postman_id": "44fdf8d3-235f-33ab-06a8-f18062e85730",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/itens",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:18489/api/itens",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "18489",
+					"path": [
+						"api",
+						"itens"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/itens?floorNumber=1&buildingName=Stone",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:18489/api/itens?floorNumber=1&buildingName=Ed. Stone",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "18489",
+					"path": [
+						"api",
+						"itens"
+					],
+					"query": [
+						{
+							"key": "floorNumber",
+							"value": "1",
+							"equals": true
+						},
+						{
+							"key": "buildingName",
+							"value": "Ed. Stone",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/itens?allocated=true&floorNumber=1&buildingName=Stone",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:18489/api/itens?allocated=true&floorNumber=1&buildingName=Ed. Stone",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "18489",
+					"path": [
+						"api",
+						"itens"
+					],
+					"query": [
+						{
+							"key": "allocated",
+							"value": "true",
+							"equals": true
+						},
+						{
+							"key": "floorNumber",
+							"value": "1",
+							"equals": true
+						},
+						{
+							"key": "buildingName",
+							"value": "Ed. Stone",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/itens?allocated=true",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:18489/api/itens?allocated=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "18489",
+					"path": [
+						"api",
+						"itens"
+					],
+					"query": [
+						{
+							"key": "allocated",
+							"value": "true",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/itens?allocated=false",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:18489/api/itens?allocated=false",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "18489",
+					"path": [
+						"api",
+						"itens"
+					],
+					"query": [
+						{
+							"key": "allocated",
+							"value": "false",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/itens?allocated=false&floorNumber=1&buildingName=Stone",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:18489/api/itens?allocated=false&floorNumber=1&buildingName=Ed. Stone",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "18489",
+					"path": [
+						"api",
+						"itens"
+					],
+					"query": [
+						{
+							"key": "allocated",
+							"value": "false",
+							"equals": true
+						},
+						{
+							"key": "floorNumber",
+							"value": "1",
+							"equals": true
+						},
+						{
+							"key": "buildingName",
+							"value": "Ed. Stone",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/itens/{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:18489/api/itens?floorNumber=1&buildingName=Ed. Stone",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "18489",
+					"path": [
+						"api",
+						"itens"
+					],
+					"query": [
+						{
+							"key": "floorNumber",
+							"value": "1",
+							"equals": true
+						},
+						{
+							"key": "buildingName",
+							"value": "Ed. Stone",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/itens",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\":\"2017-0010 Dell v14t-5470-a50\",\r\n\"enabled\":true,\r\n\"floor\": { \r\n  \"number\":2,\r\n  \"building\":\"Ed. Stone\"\r\n  }\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:18489/api/itens/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "18489",
+					"path": [
+						"api",
+						"itens",
+						""
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/itens",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"id\": \"59e244f98941320f083d0e6f\",\r\n\"name\":\"stn2017-0001 Dell v14t-5470-a50\",\r\n\"enabled\":true,\r\n\"floor\": { \r\n  \"number\":1,\r\n  \"building\":\"Ed. Stone\"\r\n  }\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:18489/api/itens/59e244f98941320f083d0e6f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "18489",
+					"path": [
+						"api",
+						"itens",
+						"59e244f98941320f083d0e6f"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/itens/{id}",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"id\": \"59e4ac3d8347723afcc48002\",\r\n\"name\":\"2017-0011 Dell v14t-5470-a50\",\r\n\"enabled\":true,\r\n\"floor\": { \r\n  \"number\":1,\r\n  \"building\":\"Ed. Stone\"\r\n  }\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:18489/api/itens/59e4ac3d8347723afcc48002",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "18489",
+					"path": [
+						"api",
+						"itens",
+						"59e4ac3d8347723afcc48002"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/itens/{id}/use",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"id\": \"59e4ac3d8347723afcc48002\",\r\n\"name\":\"2017-0011 Dell v14t-5470-a50\",\r\n\"enabled\":true,\r\n\"floor\": { \r\n  \"number\":1,\r\n  \"building\":\"Ed. Stone\"\r\n  }\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:18489/api/itens/59e244f98941320f083d0e76/use",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "18489",
+					"path": [
+						"api",
+						"itens",
+						"59e244f98941320f083d0e76",
+						"use"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/itens/{id}/enable",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"id\": \"59e4ac3d8347723afcc48002\",\r\n\"name\":\"2017-0011 Dell v14t-5470-a50\",\r\n\"enabled\":true,\r\n\"floor\": { \r\n  \"number\":1,\r\n  \"building\":\"Ed. Stone\"\r\n  }\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:18489/api/itens/59e244f98941320f083d0e77/enable",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "18489",
+					"path": [
+						"api",
+						"itens",
+						"59e244f98941320f083d0e77",
+						"enable"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/itens/{id}/disable",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"id\": \"59e4ac3d8347723afcc48002\",\r\n\"name\":\"2017-0011 Dell v14t-5470-a50\",\r\n\"enabled\":true,\r\n\"floor\": { \r\n  \"number\":1,\r\n  \"building\":\"Ed. Stone\"\r\n  }\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:18489/api/itens/59e244f98941320f083d0e77/disable",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "18489",
+					"path": [
+						"api",
+						"itens",
+						"59e244f98941320f083d0e77",
+						"disable"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
